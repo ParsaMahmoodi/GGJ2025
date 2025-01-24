@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minBounds: {x: -8, y: -4.5}
   maxBounds: {x: 8, y: 4.5}
+  maxBubbles: 4
+  shrinkFactor: 0.8
+  cooldownTime: 3
+  shrinkDuration: 0.3
+  growDuration: 2
   moveSpeed: 5
-  bubbleShootForce: 2
-  initialSize: 10
-  sizeReductionPerShot: 1
-  minSize: 5
-  initialHealth: 100
+  initialSize: 2.5
