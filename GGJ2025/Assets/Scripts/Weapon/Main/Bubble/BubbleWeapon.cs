@@ -16,7 +16,7 @@ namespace Weapon.Main.Bubble
 
         public void Shoot()
         {
-            var bubble = _bubblePool.GetBubble();
+            var bubble = _bubblePool.GetObject();
             bubble.transform.position = _playerManager.shootPoint.position;
             bubble.transform.rotation = _playerManager.shootPoint.rotation;
 
