@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public class Thorn : MonoBehaviour
 {
     protected Action OnUpdate;
     public float speed;
-
+    
     private void Start()
     {
         Init();
@@ -20,22 +21,10 @@ public abstract class Enemy : MonoBehaviour
     {
         OnUpdate += Move;
     }
-
-    private void OnBecameInvisible()
-    {
-        Kill();
-    }
-
-    public virtual void Kill()
-    {
-        gameObject.SetActive(false);
-    }
     
     protected virtual void Move()
     {
         Vector3 movementOffset = ((Vector3.left * speed) * Time.deltaTime);
         transform.position += movementOffset;
     }
-    
-    
 }
