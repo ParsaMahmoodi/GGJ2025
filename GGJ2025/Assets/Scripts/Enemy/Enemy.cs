@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Weapon.Main.Bubble;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -35,6 +36,4 @@ public abstract class Enemy : MonoBehaviour
             transform.position += movementOffset;
         }
     }
-
-
 }
