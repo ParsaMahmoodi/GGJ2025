@@ -25,7 +25,7 @@ namespace Weapon.Main.Bubble
         private void CreateParent()
         {
             _poolParent = new GameObject().transform;
-            _poolParent.name = "Pool";
+            _poolParent.name = $"Pool + {_prefab.name}";
         }
 
         public GameObject GetObject()
