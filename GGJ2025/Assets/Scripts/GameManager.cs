@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Weapon.Main.Bubble;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public AudioClip backgroundMusic;
     public PlayerManager playerManager;
     public List<Spawner> spawners;
+    public TextMeshProUGUI health;
 
     void Start()
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        health.text = "HP: " + playerManager._playerHealth.GetRatio().ToString();
     }
 
     private void PlayAudio()

@@ -18,7 +18,7 @@ namespace Weapon.Main.Bubble
         private float _health;
         private PlayerData _playerData;
         
-        private Health _playerHealth;
+        public Health _playerHealth;
         private Damageable _damageable;
 
 
