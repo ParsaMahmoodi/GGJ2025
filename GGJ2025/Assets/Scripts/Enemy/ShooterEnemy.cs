@@ -1,9 +1,14 @@
+using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using Weapon.Application;
+using Random = UnityEngine.Random;
 
 public class ShooterEnemy : Enemy, IWeapon
 {
     public Range<float> ShootRange;
+    public Spawner BulletSpawner;
     
     private float _time = 0;
     private float currentSelectedTime = 0;
@@ -26,7 +31,7 @@ public class ShooterEnemy : Enemy, IWeapon
     
     public void Shoot()
     {
-        
+        BulletSpawner.Spawn(transform.position,quaternion.identity);
     }
 
     private void ResetShootConfig()
