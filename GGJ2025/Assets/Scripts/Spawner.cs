@@ -1,17 +1,24 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Weapon.Main.Bubble;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject _object;
     public int SpawnCountPerFrame = 1;
+    public int InitialSize = 10;
     public float queueTime = 1.5f;
     public bool ShouldSpawnOnUpdate;
-
-    private float _time = 0;
     
+    private ObjectPool _pool;
+    private float _time = 0;
+
+    private void Start()
+    {
+        int initialSize = InitialSize * SpawnCountPerFrame;
+        _pool = new ObjectPool(_object,initialSize);
+    }
 
     private void Update()
     {
@@ -44,13 +51,15 @@ public class Spawner : MonoBehaviour
 
     public virtual GameObject Instantiate()
     {
-        GameObject obj = Instantiate(_object);
+        GameObject obj = _pool.GetObject();
         return obj;
     } 
     
     public virtual GameObject Instantiate(Vector3 position,Quaternion rotation)
     {
-        GameObject obj = Instantiate(_object,position,rotation);
+        GameObject obj = Instantiate();
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
         return obj;
     } 
 }
