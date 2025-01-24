@@ -13,6 +13,7 @@ using UnityEngine;
             if (GUILayout.Button("Kill"))
             {
                 controller.Kill();
+                controller.SpawnFish();
             }
         }
     }

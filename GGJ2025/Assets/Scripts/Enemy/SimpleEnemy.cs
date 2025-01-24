@@ -4,10 +4,16 @@ using UnityEngine;
 public class SimpleEnemy : Enemy
 {
     public Spawner FishSpawner;
-    
-    public override void Kill()
+    public Health Health;
+    protected override void Init()
     {
-        base.Kill();
+        base.Init();
+        Health.OnDie += Kill;
+        Health.OnDie += SpawnFish;
+    }
+
+    public void SpawnFish()
+    {
         FishSpawner.Spawn(transform.position,quaternion.identity);
     }
 }
