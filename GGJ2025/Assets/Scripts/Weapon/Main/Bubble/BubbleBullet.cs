@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using UnityEngine;
 
 namespace Weapon.Main.Bubble
@@ -10,7 +11,7 @@ namespace Weapon.Main.Bubble
 
         private float _elapsedTime = 0f;
 
-        public float enemyScaleFactor = 0.1f;
+        public float enemyScaleFactor = 0.2f;
         private GameObject absorbedEnemy;
 
         private void OnEnable()
@@ -22,7 +23,8 @@ namespace Weapon.Main.Bubble
         {
             _elapsedTime += Time.deltaTime;
 
-            transform.position += transform.right * bubbleShootForce * Time.deltaTime;
+            if (absorbedEnemy == null)
+                transform.position += transform.right * bubbleShootForce * Time.deltaTime;
 
             if (_elapsedTime >= duration)
             {
@@ -31,31 +33,39 @@ namespace Weapon.Main.Bubble
         }
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.LogError("INJA");
-        bool isEnemyDetected = other.gameObject.GetComponent<SimpleEnemy>() != null;
-        Debug.LogError(isEnemyDetected);
-        if (absorbedEnemy == null && isEnemyDetected)
+        void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("IFFF");
-            absorbedEnemy = other.gameObject;
-            AbsorbEnemy(absorbedEnemy);
+
+            var enem = other.gameObject.GetComponent<Enemy>();
+            bool isEnemyDetected = enem != null;
+
+            if (absorbedEnemy == null && isEnemyDetected)
+            {
+                enem.shouldMove = false;
+                absorbedEnemy = other.gameObject;
+                AbsorbEnemy(absorbedEnemy);
+            }
         }
-    }
 
         void AbsorbEnemy(GameObject enemy)
         {
             enemy.transform.localScale = this.transform.localScale * enemyScaleFactor;
 
-            enemy.transform.position = this.transform.position;
+            enemy.transform.localPosition = UnityEngine.Vector2.zero;
             enemy.transform.SetParent(this.transform);
+            var x = enemy.GetComponent<RectTransform>();
+            x.anchoredPosition = UnityEngine.Vector2.zero;
         }
 
         void OnBecameInvisible()
         {
-            if(absorbedEnemy != null)    
+            if (absorbedEnemy != null)
+            {
+
+                absorbedEnemy.GetComponent<Enemy>().shouldMove = true;
                 absorbedEnemy.transform.SetParent(null);
+                absorbedEnemy = null;
+            }
         }
     }
 }

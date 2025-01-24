@@ -5,12 +5,13 @@ public abstract class Enemy : MonoBehaviour
 {
     protected Action OnUpdate;
     public float speed;
+    public bool shouldMove = true;
 
     private void Start()
     {
         Init();
     }
-    
+
     private void Update()
     {
         OnUpdate?.Invoke();
@@ -25,12 +26,15 @@ public abstract class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    
+
     protected virtual void Move()
     {
-        Vector3 movementOffset = ((Vector3.left * speed) * Time.deltaTime);
-        transform.position += movementOffset;
+        if (shouldMove)
+        {
+            Vector3 movementOffset = ((Vector3.left * speed) * Time.deltaTime);
+            transform.position += movementOffset;
+        }
     }
-    
-    
+
+
 }

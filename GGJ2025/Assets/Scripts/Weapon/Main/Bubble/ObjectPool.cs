@@ -34,6 +34,12 @@ namespace Weapon.Main.Bubble
             {
                 if (!obj.activeInHierarchy)
                 {
+                    obj.transform.SetParent(_poolParent);
+                    
+                    obj.transform.position = _prefab.transform.position;
+                    obj.transform.rotation = _prefab.transform.rotation;
+                    obj.transform.localScale = _prefab.transform.localScale;
+
                     return obj;
                 }
             }

@@ -12,7 +12,7 @@ namespace Weapon.Main.Bubble
 
         private void OnEnable()
         {
-            var position = transform.position;
+            var position = transform.localPosition;
             _startPosition = new Vector2(position.x, position.y);
 
             StartBubbleAnimation();
@@ -20,7 +20,7 @@ namespace Weapon.Main.Bubble
 
         private void StartBubbleAnimation()
         {
-            transform.DOMoveY(_startPosition.y + upDownDistance, upDownDuration)
+            transform.DOLocalMoveY(_startPosition.y + upDownDistance, upDownDuration)
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo);
         }
