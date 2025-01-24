@@ -8,15 +8,19 @@ using Random = UnityEngine.Random;
 public class ShooterEnemy : Enemy, IWeapon
 {
     public Range<float> ShootRange;
-    public Spawner BulletSpawner;
+    private Spawner BulletSpawner;
     
     private float _time = 0;
     private float currentSelectedTime = 0;
+    
+    private string ThornSpawnerTag = "ThornSpawner";
+
 
     protected override void Init()
     {
         base.Init();
         OnUpdate += ReadyToFire;
+        BulletSpawner = GameObject.FindGameObjectWithTag(ThornSpawnerTag).GetComponent<Spawner>();
     }
 
     public void ReadyToFire()

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SimpleEnemy : Enemy
 {
-    public Spawner FishSpawner;
-    public Health Health;
+    private Spawner FishSpawner;
+    private Health Health;
 
     private string FishSpawnerTag = "FishSpawner";
    
@@ -12,6 +12,7 @@ public class SimpleEnemy : Enemy
     protected override void Init()
     {
         base.Init();
+        Health = GetComponent<Health>();
         FishSpawner = GameObject.FindGameObjectWithTag(FishSpawnerTag).GetComponent<Spawner>();
         Health.OnDie += Kill;
         Health.OnDie += SpawnFish;
@@ -19,6 +20,7 @@ public class SimpleEnemy : Enemy
 
     public void SpawnFish()
     {
+        Debug.Log("Spawn Fish");
         FishSpawner.Spawn(transform.position,quaternion.identity);
     }
 }
