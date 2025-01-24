@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Weapon.Main.Bubble
 {
@@ -7,11 +8,12 @@ namespace Weapon.Main.Bubble
     {
         public Vector2 minBounds;
         public Vector2 maxBounds;
+        public int maxBubbles = 4;
+        public float shrinkFactor = 0.8f;
+        public float cooldownTime = 3f;
+        public float shrinkDuration = 0.3f;
+        public float growDuration = 2f;
         public float moveSpeed = 5f;
-        public float bubbleShootForce;
         public float initialSize = 1f;
-        public float sizeReductionPerShot = 0.1f;
-        public float minSize = 0.5f;
-        public float initialHealth;
     }
 }
