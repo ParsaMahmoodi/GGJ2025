@@ -31,6 +31,7 @@ namespace Weapon.Main.Bubble
         public AudioSource audioSource;
         public AudioClip die_1;
         public AudioClip die_2;
+        public AudioClip shoot;
 
         public Action OnDieAction;
 
@@ -91,7 +92,9 @@ namespace Weapon.Main.Bubble
         }
 
         private void ShootBubble()
-        {
+        {   
+            audioSource.PlayOneShot(shoot);
+
             _currentWeapon.Shoot();
             _bubblesShot++;
 

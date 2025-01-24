@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Weapon.Main.Bubble;
 
 public class GameManager : MonoBehaviour
@@ -37,7 +38,13 @@ public class GameManager : MonoBehaviour
         audioSource.Stop();
         foreach(var spawner in spawners)
             spawner.gameObject.SetActive(false);
+
+        Invoke(nameof(EndGame), 1.5f);
     }
 
+    private void EndGame()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 
 }
