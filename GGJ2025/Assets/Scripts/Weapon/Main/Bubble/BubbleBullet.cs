@@ -10,6 +10,9 @@ namespace Weapon.Main.Bubble
 
         private float _elapsedTime = 0f;
 
+        public float enemyScaleFactor = 0.1f;
+        private GameObject absorbedEnemy;
+
         private void OnEnable()
         {
             _elapsedTime = 0;
@@ -25,6 +28,34 @@ namespace Weapon.Main.Bubble
             {
                 gameObject.SetActive(false);
             }
+        }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.LogError("INJA");
+        bool isEnemyDetected = other.gameObject.GetComponent<SimpleEnemy>() != null;
+        Debug.LogError(isEnemyDetected);
+        if (absorbedEnemy == null && isEnemyDetected)
+        {
+            Debug.Log("IFFF");
+            absorbedEnemy = other.gameObject;
+            AbsorbEnemy(absorbedEnemy);
+        }
+    }
+
+        void AbsorbEnemy(GameObject enemy)
+        {
+            enemy.transform.localScale = this.transform.localScale * enemyScaleFactor;
+
+            enemy.transform.position = this.transform.position;
+            enemy.transform.SetParent(this.transform);
+        }
+
+        void OnBecameInvisible()
+        {
+            if(absorbedEnemy != null)    
+                absorbedEnemy.transform.SetParent(null);
         }
     }
 }
