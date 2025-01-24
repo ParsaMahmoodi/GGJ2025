@@ -21,7 +21,7 @@ public abstract class Enemy : MonoBehaviour
         OnUpdate += Move;
     }
 
-    protected virtual void Kill()
+    public virtual void Kill()
     {
         Destroy(gameObject);
     }
