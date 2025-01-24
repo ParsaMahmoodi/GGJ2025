@@ -7,8 +7,8 @@ public class SimpleEnemy : Enemy
     private Health Health;
 
     private string FishSpawnerTag = "FishSpawner";
-   
-    
+
+
     protected override void Init()
     {
         base.Init();
@@ -21,6 +21,6 @@ public class SimpleEnemy : Enemy
     public void SpawnFish()
     {
         Debug.Log("Spawn Fish");
-        FishSpawner.Spawn(transform.position,quaternion.identity);
+        FishSpawner.Spawn(transform.position, quaternion.identity);
     }
 }
