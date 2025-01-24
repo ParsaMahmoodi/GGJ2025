@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9144817814223107341}
   - component: {fileID: 9144817814223107340}
   - component: {fileID: 9144817814223107346}
-  - component: {fileID: 4719310334753372996}
+  - component: {fileID: 8117901636641175572}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Untagged
@@ -50,7 +50,6 @@ MonoBehaviour:
   ShootRange:
     Max: 5
     Min: 2
-  BulletSpawner: {fileID: 4719310334753372996}
 --- !u!212 &9144817814223107346
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +102,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4719310334753372996
+--- !u!114 &8117901636641175572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,10 +111,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9144817814223107343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1b589c5ae3a10147ae46d56b25851a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2be42b1a95be7b24d960f296059091b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 760235394359251977, guid: 1437a5a38cbea434abd17c1ee84a41dc, type: 3}
-  SpawnCountPerFrame: 1
-  queueTime: 0
-  ShouldSpawnOnUpdate: 0

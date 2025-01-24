@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 760235394359251978}
   - component: {fileID: 760235394359251979}
   - component: {fileID: 3801471051134981728}
+  - component: {fileID: 539086987437199774}
   m_Layer: 0
   m_Name: thorn
   m_TagString: Untagged
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+--- !u!114 &539086987437199774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760235394359251977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be42b1a95be7b24d960f296059091b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
