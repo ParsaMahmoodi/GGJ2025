@@ -21,9 +21,14 @@ public abstract class Enemy : MonoBehaviour
         OnUpdate += Move;
     }
 
+    private void OnBecameInvisible()
+    {
+        Kill();
+    }
+
     public virtual void Kill()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
     protected virtual void Move()

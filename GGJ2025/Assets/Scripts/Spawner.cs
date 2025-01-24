@@ -52,6 +52,7 @@ public class Spawner : MonoBehaviour
     public virtual GameObject Instantiate()
     {
         GameObject obj = _pool.GetObject();
+        obj.SetActive(true);
         return obj;
     } 
     

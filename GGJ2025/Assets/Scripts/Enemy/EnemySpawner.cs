@@ -10,7 +10,6 @@ public class EnemySpawner : Spawner
     {
         GameObject go = base.Instantiate();
         go.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
-        Destroy(go, 10);
         return go;
     }
 }
