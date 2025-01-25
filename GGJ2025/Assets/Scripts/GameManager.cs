@@ -13,16 +13,39 @@ public class GameManager : MonoBehaviour
     public List<Spawner> spawners;
     public TextMeshProUGUI health;
 
+    public TextMeshProUGUI highScoreText;
+
+    private int highScore;
+    private int currentScore = 0;
+    private float elapsedTime = 0f;
+    private float scoreUpdateInterval = 1f;
+
+
     void Start()
     {
         PlayAudio();
         playerManager.OnDieAction += StopGame;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = "High Score: " + highScore.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        health.text = "HP: " + playerManager._playerHealth.GetRatio().ToString();
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= scoreUpdateInterval)
+        {
+            IncreaseScore(1);
+            elapsedTime = 0f;
+        }
+
+        health.text = "HP: " + (playerManager._playerHealth.GetRatio() * 100).ToString();
+
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            highScoreText.text = "High Score: " + highScore.ToString();
+        }
     }
 
     private void PlayAudio()
@@ -36,7 +59,7 @@ public class GameManager : MonoBehaviour
     private void StopGame()
     {
         audioSource.Stop();
-        foreach(var spawner in spawners)
+        foreach (var spawner in spawners)
             spawner.gameObject.SetActive(false);
 
         Invoke(nameof(EndGame), 1.5f);
@@ -44,7 +67,14 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("StartScene");
     }
 
+    public void IncreaseScore(int scoreDelta)
+    {
+        currentScore += scoreDelta;
+    }
 }

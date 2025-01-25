@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleShootForce: 5
-  duration: 3
+  duration: 8
   enemyScaleFactor: 0.5
 --- !u!50 &7650013770958143408
 Rigidbody2D:

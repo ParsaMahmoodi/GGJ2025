@@ -15,7 +15,8 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
-        OnUpdate?.Invoke();
+        if (shouldMove)
+            OnUpdate?.Invoke();
     }
 
     protected virtual void Init()
