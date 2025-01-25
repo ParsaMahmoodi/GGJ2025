@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f51b8f8bac634848aab4417bc58e2fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9de841d7c6ed89c4082045d39d551bdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,6 +170,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblePrefab: {fileID: 7650013770958143407, guid: bdfd613d422b91a46b46730b33db6a71, type: 3}
   shootPoint: {fileID: 8905539150918620555}
+  _playerHealth: {fileID: 0}
+  audioSource: {fileID: 0}
+  die_1: {fileID: 0}
+  die_2: {fileID: 0}
+  shoot: {fileID: 0}
 --- !u!50 &8905539152647277213
 Rigidbody2D:
   serializedVersion: 4

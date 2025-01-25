@@ -7,16 +7,22 @@ namespace Weapon.Main.Bubble
     public class BubbleBullet : MonoBehaviour
     {
         public float bubbleShootForce;
-        public float duration = 2f;
+        public float duration = 16f;
 
         private float _elapsedTime = 0f;
 
         public float enemyScaleFactor = 0.2f;
         private GameObject absorbedEnemy;
+        private GameManager gameManager;
 
         private void OnEnable()
         {
             _elapsedTime = 0;
+        }
+
+        void Start()
+        {
+            gameManager = FindObjectOfType<GameManager>();
         }
 
         private void Update()
@@ -28,6 +34,16 @@ namespace Weapon.Main.Bubble
 
             if (_elapsedTime >= duration)
             {
+
+                if (absorbedEnemy != null)
+                {
+                    gameManager.IncreaseScore(10);
+
+                    absorbedEnemy.GetComponent<Enemy>().shouldMove = true;
+                    absorbedEnemy.transform.SetParent(null);
+                    absorbedEnemy = null;
+                }
+
                 gameObject.SetActive(false);
             }
         }
@@ -55,17 +71,6 @@ namespace Weapon.Main.Bubble
             enemy.transform.SetParent(this.transform);
             var x = enemy.GetComponent<RectTransform>();
             x.anchoredPosition = UnityEngine.Vector2.zero;
-        }
-
-        void OnBecameInvisible()
-        {
-            if (absorbedEnemy != null)
-            {
-
-                absorbedEnemy.GetComponent<Enemy>().shouldMove = true;
-                absorbedEnemy.transform.SetParent(null);
-                absorbedEnemy = null;
-            }
         }
     }
 }

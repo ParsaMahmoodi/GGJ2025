@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Weapon.Main.Bubble;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
-        OnUpdate?.Invoke();
+        if (shouldMove)
+            OnUpdate?.Invoke();
     }
 
     protected virtual void Init()
@@ -35,6 +37,4 @@ public abstract class Enemy : MonoBehaviour
             transform.position += movementOffset;
         }
     }
-
-
 }

@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(SimpleEnemy))]
     public class SimpleEnemyInspector :  Editor
     {
@@ -17,3 +18,4 @@ using UnityEngine;
             }
         }
     }
+#endif

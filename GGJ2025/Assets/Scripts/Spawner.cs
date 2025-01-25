@@ -64,4 +64,12 @@ public class Spawner : MonoBehaviour
         obj.transform.rotation = rotation;
         return obj;
     }
+
+    public void StopAllSpawns()
+    {
+        foreach (var s in _pool.GetSpawns())
+        {
+            s.gameObject.SetActive(false);
+        }
+    }
 }

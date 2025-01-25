@@ -56,6 +56,11 @@ namespace Weapon.Main.Bubble
             _pool.Add(newObject);
             return newObject;
         }
+
+        public List<GameObject> GetSpawns()
+        {
+            return _pool;
+        }
         
     }
 }
